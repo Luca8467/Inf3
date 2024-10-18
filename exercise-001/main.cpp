@@ -6,6 +6,13 @@
 #include <random>
 #include <iostream>
 
+void print_vector(const std::vector<int>& vec) {
+    for (const auto& val : vec) {
+        fmt::print("{} ", val);
+    }
+    fmt::print("\n");
+}
+
 auto main(int argc, char **argv) -> int
 {
     int count = 20;
@@ -39,11 +46,11 @@ auto main(int argc, char **argv) -> int
     /* INSERT YOUR CODE HERE */
     fmt::print("Count is set to: {}\n", count);
 
-    std::vector<int> vec(count);  // Vektor mit 5 Elementen, die auf 0 initialisiert sind
-
-    // Ausgabe der Elemente
+    std::vector<int> vec(count);  
+    // Festlegen der Elemente
     for (int i = 0; i < vec.size(); ++i) {
         vec[i]=distrib(gen);
     }
+    print_vector(vec);
     return 0; /* exit gracefully*/
 }
