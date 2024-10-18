@@ -3,9 +3,15 @@
 
 #include "CLI/CLI.hpp"
 #include "config.h"
-int count = 20;
+#include <random>
+#include <iostream>
+
 auto main(int argc, char **argv) -> int
 {
+    int count = 20;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distrib(0, 100);
     /**
      * CLI11 is a command line parser to add command line options
      * More info at https://github.com/CLIUtils/CLI11#usage
@@ -31,9 +37,13 @@ auto main(int argc, char **argv) -> int
     fmt::print("Hello, {}!\n", app.get_name());
 
     /* INSERT YOUR CODE HERE */
-    
-    
     fmt::print("Count is set to: {}\n", count);
 
+    std::vector<int> vec(count);  // Vektor mit 5 Elementen, die auf 0 initialisiert sind
+
+    // Ausgabe der Elemente
+    for (int i = 0; i < vec.size(); ++i) {
+        vec[i]=distrib(gen);
+    }
     return 0; /* exit gracefully*/
 }
